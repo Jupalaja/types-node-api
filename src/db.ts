@@ -4,7 +4,7 @@ import { IPosts } from "./interfaces/post";
 
 let db: lowdb.LowdbSync<IPosts>;
 
-export const createConnection = () => {
+const createConnection = () => {
   const adapter = new FileSync<IPosts>("db.json");
   db = lowdb(adapter);
   if (!db.has("posts").value()) {
@@ -12,4 +12,6 @@ export const createConnection = () => {
   }
 };
 
-export const getConnection = () => db;
+const getConnection = () => db;
+
+export { createConnection, getConnection };

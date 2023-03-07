@@ -1,0 +1,240 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Posts API",
+      "description": "A RESTful API for managing entities, designed to be scalable, sustainable, and easy to use. It has been built using best practices, such as modular design, separation of concerns, and documentation-driven development. \n\nThe API is designed to be easily scalable, with a modular architecture that allows for easy addition of new features and components as needed. It is also designed to be easily sustainable, with code that is easy to maintain and update as necessary. Good practices have been followed throughout the development process, such as using appropriate HTTP methods for each endpoint, returning appropriate status codes, and providing detailed error messages. \n\nBelow you will find  a detailed documentation that explains all of its endpoints and how to use them. This documentation is provided in the OpenAPI (formerly known as Swagger) format, which can be easily imported into a variety of tools for testing and development. The documentation includes detailed descriptions of each endpoint, along with example requests and responses. "
+    },
+    "tags": [
+      {
+        "name": "posts",
+        "description": "Operations related to posts"
+      }
+    ],
+    "paths": {
+      "/posts": {
+        "get": {
+          "tags": [
+            "posts"
+          ],
+          "summary": "Get all posts",
+          "operationId": "getAllPosts",
+          "responses": {
+            "200": {
+              "description": "Posts retrieved successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Post"
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "posts"
+          ],
+          "summary": "Create a new Post",
+          "operationId": "createPost",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NewPost"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Post created successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Post"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid request body"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/posts/{id}": {
+        "get": {
+          "tags": [
+            "posts"
+          ],
+          "summary": "Get an Post by id",
+          "operationId": "getPostById",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "description": "The id of the Post to retrieve",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Post retrieved successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Post"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Post not found"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "put": {
+            "tags": [
+              "posts"
+            ],
+            "summary": "Update an Post by id",
+            "operationId": "updatePostById",
+            "parameters": [
+              {
+                "in": "path",
+                "name": "id",
+                "description": "The id of the Post to update",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UpdatePost"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Post updated successfully",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/Post"
+                    }
+                  }
+                }
+              },
+              "400": {
+                "description": "Invalid request body"
+              },
+              "404": {
+                "description": "Post not found"
+              },
+              "500": {
+                "description": "Internal server error"
+              }
+            }
+          },
+            "delete": {
+                "tags": [
+                "posts"
+                ],
+                "summary": "Delete an Post by id",
+                "operationId": "deletePostById",
+                "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "The id of the Post to delete",
+                    "required": true,
+                    "schema": {
+                    "type": "string"
+                    }
+                }
+                ],
+                "responses": {
+                "204": {
+                    "description": "Post deleted successfully"
+                },
+                "404": {
+                    "description": "Post not found"
+                },
+                "500": {
+                    "description": "Internal server error"
+                }
+                }
+            }
+        }
+    },
+    "components": {
+      "schemas": {
+        "Post": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "NewPost": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        },
+        "UpdatePost": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+}
+    
+          
