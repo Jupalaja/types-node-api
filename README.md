@@ -1,6 +1,11 @@
 # Posts API
 A RESTful API for managing entities, designed to be scalable, sustainable, and easy to use. It has been built using best practices, such as modular design, separation of concerns, and documentation-driven development.
+![Captura de Pantalla 2023-03-06 a la(s) 11 58 45 p  m](https://user-images.githubusercontent.com/82126880/223324857-c7f760f1-d613-4d0b-8380-b6b3dacdc294.png)
 
+
+The API is designed to be easily scalable, with a modular architecture that allows for easy addition of new features and components as needed. It is also designed to be easily sustainable, with code that is easy to maintain and update as necessary. Good practices have been followed throughout the development process, such as using appropriate HTTP methods for each endpoint, returning appropriate status codes, and providing detailed error messages.
+
+You will find a detailed documentation that explains all of its endpoints and how to use them. This documentation is provided in the OpenAPI (formerly known as Swagger) format, which can be easily imported into a variety of tools for testing and development. The documentation includes detailed descriptions of each endpoint, along with example requests and responses.
 
 
 ## Getting Started
